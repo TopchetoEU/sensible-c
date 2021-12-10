@@ -323,22 +323,4 @@ void* arr_filter(void* _arr, int n, int elSize, int* pcount, bool (*func)(void* 
     if (pcount) *pcount = count;
     return res;
 }
-
-bool filter(int* el) {
-    return *el < 5;
-}
-void select(int* el, string* out) {
-    *out = str_intToString(*el);
-}
-
-void main() {
-    int arr[] = { 14, 5, 11, 5, 5, 1, 7, 22, 6, 25 };
-    int count = 0;
-
-    int* arr2 = arr_filter(arr, 10, 4, &count, filter);
-
-    for (int i = 0; i < count; i++) {
-        printf("%s", str_join(arr2[i], arr_select(arr, count, sizeof(int*), sizeof(string*), select), count));
-    }
-}
 #endif
