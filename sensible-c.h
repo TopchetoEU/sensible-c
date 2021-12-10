@@ -20,6 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+// How to use: Just put this file in the folder of your .c file and write #include <sensible-c.h> in the beginning of your file.
+// NOTE! Can't be included twice and puffs up somewhat executable. Usage in multiple files is not reccomended
+
+#ifndef SENSIBLE_C
+#define SENSIBLE_C 1
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -335,3 +341,4 @@ void main() {
         printf("%s", str_join(arr2[i], arr_select(arr, count, sizeof(int*), sizeof(string*), select), count));
     }
 }
+#endif
