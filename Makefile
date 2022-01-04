@@ -5,7 +5,8 @@ gxx = gcc
 bin-dir = bin
 src-dir = src
 inc-dir = include
-output = bin/main
+output = bin/libsensible
+flags = -O9
 ###################################
 
 sources = $(call rwildcard,$(src-dir),*.c)
@@ -15,8 +16,8 @@ ifeq ($(sources), )
 $(error No innput files)
 endif
 
-build: clear $(binaries) $(output)
-build-win: clear-win $(binaries) $(output).exe
+build: clear $(output).so
+build-win: clear-win $(output).dll
 
 debug-build: flags=-g
 debug-build-win: flags=-g
@@ -31,9 +32,9 @@ clear-win:
 	if not exist "$(bin-dir)" mkdir "$(bin-dir)"
 
 bin/%.o: src/%.c
-	$(gxx) -Wall -Wno-main -Wno-trigraphs -c $(flags) $^ -o $@ "-I$(inc-dir)"
+	$(gxx) -Wall -Wno-main -Wno-trigraphs -fpic -c $(flags) $^ -o $@ "-I$(inc-dir)"
 
-$(output):
-	$(gxx) -g $(binaries) -o $@
-$(output)%:
-	$(gxx) -g $(binaries) -o $@
+$(output): $(binaries)
+	$(gxx) -shared $(flags) $(binaries) -o $@
+$(output)%: $(binaries)
+	$(gxx) -shared $(flags) $(binaries) -o $@

@@ -1,19 +1,25 @@
 #ifndef _SENSTR_H
 #define _SENSTR_H 1
 
-#include <stdint.h>
-#include <stdbool.h>
+#include "sendefs.h"
 
-char* sconcatb(char* buff, size_t buffN, const char* val);
-char* sconcatlimb(char* buff, size_t buffN, const char* val, size_t n);
+dynstr sconcatb(dynstr buff, size_t buffN, string val);
+dynstr sconcatlimb(dynstr buff, size_t buffN, string val, size_t n);
+dynstr sconcatarrd(size_t n, string* arr);
+dynstr sconcatarrb(dynstr buff, size_t buffN, size_t n, string* arr);
+dynstr sconcatvd(size_t n, ...);
+dynstr sconcatvb(dynstr buff, size_t buffN, size_t n, ...);
 
-char* sconcatarrd(size_t n, ...);
-char* sconcatarrb(char* buff, size_t buffN, size_t n, ...);
+size_t sfind(string str, string pattern, size_t skipN);
+size_t sfindlast(string str, string pattern, size_t skipN);
 
-char* sreplaceb(const char* str, char* buff, size_t buffN, const char* pattern, const char* val);
-char* sreplaced(const char* str, const char* pattern, const char* val);
+dynstr sreplaceb(string str, dynstr buff, size_t buffN, string pattern, string val);
+dynstr sreplaced(string str, string pattern, string val);
 
-long sfind(const char* str, const char* pattern, long start);
-long sfindlast(const char* str, const char* pattern, long skipN);
+dynstr* ssplitb(dynstr buff1, size_t buff1N, dynstr* buff2, size_t buff2N, string str, string sep, size_t* psize);
+dynstr* ssplitd(string str, string sep, size_t* psize);
+
+dynstr sjoinarrb(dynstr buff, size_t buffN, string separator, string* arr, size_t n);
+dynstr sjoinarrd(string separator, string* arr, size_t n);
 
 #endif
