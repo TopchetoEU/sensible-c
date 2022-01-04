@@ -1,0 +1,33 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "include/*"
+            ],
+            "defines": [],
+            // Modify this to match a GCC compiler on your system
+            "compilerPath": "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gcc.exe",
+            "cStandard": "c17",
+            "configurationProvider": "ms-vscode.makefile-tools",
+            "compilerArgs": [
+                "-Iinclude"
+            ]
+        },
+        {
+            "name": "Linux",
+            "includePath": [
+                "include/*"
+            ],
+            "defines": [],
+            // Modify this to match a GCC compiler on your system
+            "compilerPath": "/usr/bin/gdb",
+            "cStandard": "c17",
+            "configurationProvider": "ms-vscode.makefile-tools",
+            "compilerArgs": [
+                "-Iinclude"
+            ]
+        }
+    ],
+    "version": 4
+}
